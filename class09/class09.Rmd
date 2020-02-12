@@ -94,10 +94,6 @@ You can also ask `cutree()` for the `k` number of groups that you want.
 cutree(hc, k=5)
 ```
 
-```{r}
-x.grps1 <- x[grps==1]
-```
-
 
 ### Some more messy data to cluster 
 
