@@ -1,0 +1,98 @@
+---
+title: "Untitled"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Coronavirus
+
+Here we analyze infection data for the 2019 novel Coronavirus COVID-19 (2019-nCoV) epidemic. The raw data is pulled from the Johns Hopkins University Center for Systems Science and Engineering (JHU CCSE) Coronavirus repository.
+
+A CSV file is available here https://github.com/RamiKrispin/coronavirus-csv
+
+
+```{r}
+url <- "https://tinyurl.com/COVID-2019"
+virus <- read.csv(url)
+
+tail(virus)
+```
+ 
+```{r}
+library(dplyr)
+
+virus %>% group_by(Country.Region) %>%
+  summarize(sum(cases)) %>%
+  arrange()
+```
+
+> Q1. How many total infected cases are there around the world?
+
+```{r}
+total_cases <- sum(virus$cases)
+total_cases
+```
+> Q2. How many deaths linked to infected cases have there been?
+Lets have a look at the *$type* column 
+
+```{r}
+table(virus$type)
+```
+
+```{r}
+inds <- virus$type == "death"
+death_cases<- sum(virus[inds,"cases"])
+```
+
+> Q3. What is the overall death rate?
+
+Percent death 
+```{r}
+round(death_cases/total_cases * 100, 2)
+```
+
+> Q4. What is the death rate in "Mainland China"?
+
+```{r}
+china.cases <- virus$Country.Region == "Mainland China"
+
+china.death_cases <- sum(virus[china.cases,"cases"])
+```
+
+```{r}
+round(china.death_cases/total_cases * 100, 2)
+```
+
+> Q5. What is the death rate in Italy, Iran and the US?
+
+```{r}
+Italy.cases <- virus$Country.Region == "Italy"
+Italy.death_cases <- sum(virus[Italy.cases, "Italy"])
+```
+
+```{r}
+round(Italy.death_cases/total_cases * 100, 2)
+```
+
+
+```{r}
+Iran.cases <- virus$Country.Region == "Iran"
+Iran.death_cases <- sum(virus[Iran.cases, "Iran"])
+```
+
+```{r}
+round(Iran.death_cases/total_cases * 100, 2)
+```
+
+```{r}
+US.cases <- virus$Country.Region == "US"
+US.death_cases <- sum(virus[US.cases, "US"])
+```
+
+```{r}
+round(US.death_cases/total_cases * 100, 2)
+```
+
