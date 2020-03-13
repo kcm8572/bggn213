@@ -1,4 +1,4 @@
-Untitled
+Class17 Corona Virus
 ================
 
 ## Coronavirus
@@ -18,13 +18,13 @@ virus <- read.csv(url)
 tail(virus)
 ```
 
-    ##      Province.State Country.Region     Lat     Long       date cases      type
-    ## 3147       Shandong Mainland China 36.3427 118.1498 2020-03-07     9 recovered
-    ## 3148       Shanghai Mainland China 31.2020 121.4491 2020-03-07     7 recovered
-    ## 3149        Sichuan Mainland China 30.6171 102.7103 2020-03-07    12 recovered
-    ## 3150    Toronto, ON         Canada 43.6532 -79.3832 2020-03-07     1 recovered
-    ## 3151       Xinjiang Mainland China 41.1129  85.2401 2020-03-07     1 recovered
-    ## 3152       Zhejiang Mainland China 29.1832 120.0934 2020-03-07     7 recovered
+    ##       Province.State Country.Region     Lat     Long       date cases      type
+    ## 33043       Zhejiang          China 29.1832 120.0934 2020-03-07     7 recovered
+    ## 33044       Zhejiang          China 29.1832 120.0934 2020-03-08     7 recovered
+    ## 33045       Zhejiang          China 29.1832 120.0934 2020-03-09    15 recovered
+    ## 33046       Zhejiang          China 29.1832 120.0934 2020-03-10    15 recovered
+    ## 33047       Zhejiang          China 29.1832 120.0934 2020-03-11     4 recovered
+    ## 33048       Zhejiang          China 29.1832 120.0934 2020-03-12     2 recovered
 
 ``` r
 library(dplyr)
@@ -47,20 +47,20 @@ virus %>% group_by(Country.Region) %>%
   arrange()
 ```
 
-    ## # A tibble: 102 x 2
+    ## # A tibble: 116 x 2
     ##    Country.Region `sum(cases)`
     ##    <fct>                 <int>
-    ##  1 Afghanistan               1
-    ##  2 Algeria                  17
-    ##  3 Andorra                   1
-    ##  4 Argentina                 8
-    ##  5 Armenia                   1
-    ##  6 Australia                86
-    ##  7 Austria                  79
-    ##  8 Azerbaijan                9
-    ##  9 Bahrain                  89
-    ## 10 Belarus                   6
-    ## # … with 92 more rows
+    ##  1 Afghanistan               7
+    ##  2 Albania                  24
+    ##  3 Algeria                  33
+    ##  4 Andorra                   2
+    ##  5 Argentina                20
+    ##  6 Armenia                   4
+    ##  7 Australia               152
+    ##  8 Austria                 307
+    ##  9 Azerbaijan               14
+    ## 10 Bahrain                 230
+    ## # … with 106 more rows
 
 > Q1. How many total infected cases are there around the world?
 
@@ -69,7 +69,7 @@ total_cases <- sum(virus$cases)
 total_cases
 ```
 
-    ## [1] 167753
+    ## [1] 201387
 
 > Q2. How many deaths linked to infected cases have there been? Lets
 > have a look at the *$type* column
@@ -80,7 +80,7 @@ table(virus$type)
 
     ## 
     ## confirmed     death recovered 
-    ##      1777       230      1145
+    ##     11016     11016     11016
 
 ``` r
 inds <- virus$type == "death"
@@ -95,7 +95,7 @@ Percent death
 round(death_cases/total_cases * 100, 2)
 ```
 
-    ## [1] 2.12
+    ## [1] 2.34
 
 > Q4. What is the death rate in “Mainland China”?
 
@@ -109,7 +109,7 @@ china.death_cases <- sum(virus[china.cases,"cases"])
 round(china.death_cases/total_cases * 100, 2)
 ```
 
-    ## [1] 82.98
+    ## [1] 0
 
 > Q5. What is the death rate in Italy, Iran and the US?
 
