@@ -4,9 +4,7 @@ This is my classwork from [BGGN-213 Winter quarter 2020](https://github.com/kcm8
 
 - Class 04: [Introduction to R]()
 - Class 05: [R Graphics]()
-- Class 06: 
-- Class 07: 
-- Class 08: 
+- Class 06: [R functions](https://github.com/kcm8572/bggn213/blob/master/class06Rmd.md)
 - Class 09: [Machine Learning pt1.](https://github.com/kcm8572/bggn213/blob/master/class09/class09.md)
 - Class 10: [Machine Learning pt2.](https://github.com/kcm8572/bggn213/blob/master/class10/class10.md)
 - Class 12: [Structural Bioinformatics]()
