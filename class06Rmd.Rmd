@@ -1,0 +1,24 @@
+---
+title: "Class 6: R functions"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+## This is a level 2 heading
+
+This is **regular** old *text*
+
+and a list of stuff
+
+- thing one
+- thing two 
+- thing three
+
+```{r}
+plot(1:5, col="blue", type="o")
+```
